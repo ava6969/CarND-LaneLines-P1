@@ -23,25 +23,26 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I appied gaussian blur to the image before passin into a canny edge detection function. i masked the img using a polygon to detect area of interest. i passed the masked image into a hough transform to convert from image space to hough space, then i layered the lines detected over the image using the weighted img.
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by usinf the numpy polyfit function to extrapolate a line from the edges detected already.
 
-![alt text][image1]
+
+[image1]: ./test_images/output_solidWhiteCurve.jpg
+[image1]: ./test_images/output_solidWhiteRight.jpg
+[image1]: ./test_images/output_solidYellowCurve.jpg
+[image1]: ./test_images/output_solidYellowCurve2.jpg
+[image1]: ./test_images/output_solidYellowLeft.jpg
+[image1]: ./test_images/output_solidCarLaneSwitch.jpg
 
 
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+One potential shortcoming would be what would happen whe i pass images with lots of curves into my pipeline. it doesnt accuratly place the lines over the alnes.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+A possible improvement would be to make the pipeline work on curved track lanes
